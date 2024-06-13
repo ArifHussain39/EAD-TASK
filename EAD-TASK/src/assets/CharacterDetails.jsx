@@ -1,11 +1,13 @@
 import React from "react";
-import { Card, List, Spin, Alert } from "antd";
+import { Spin, Alert, Card, List, Typography } from "antd";
 import { useCharacterDetails } from "./useCharacterDetails";
 import { useParams } from "react-router-dom";
 
+const { Title } = Typography;
+const { Text } = Typography;
+
 function CharacterDetails() {
   const { id } = useParams();
-
   const { data, error, loading } = useCharacterDetails(id);
 
   if (loading) {
@@ -16,9 +18,13 @@ function CharacterDetails() {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          flexDirection: "column",
         }}
       >
-        <Spin tip="Loading character details..." />
+        <Spin size="large" tip="Loading characters..." />
+        <Text type="secondary" style={{ marginTop: 20 }}>
+          Fetching data, please wait...
+        </Text>
       </div>
     );
   }
@@ -43,29 +49,56 @@ function CharacterDetails() {
     );
   }
 
-  const { name, image, episode, gender } = data.character;
+  const { character } = data;
 
   return (
-    <div
-      className="CharacterDetails"
-      style={{ padding: "20px", display: "flex", justifyContent: "center" }}
-    >
-      <Card
-        hoverable
-        style={{ width: 300 }}
-        cover={<img alt={name} src={image} />}
-      >
-        <Card.Meta title={name} />
-        <p>Gender: {gender}</p>
-
+    <div style={{ display: "flex", padding: "20px", marginTop: "80px" }}>
+      <div style={{ marginRight: "20px" }}>
+        <Card
+          hoverable
+          style={{ width: 240 }}
+          cover={<img alt={character.name} src={character.image} />}
+        >
+          <Card.Meta
+            title={character.name}
+            description={
+              <>
+                <Text>
+                  Species: {character.species}
+                  <br />
+                </Text>
+                <Text>
+                  Status: {character.status}
+                  <br />
+                </Text>
+                <Text>
+                  Origin: {character.origin.name}
+                  <br />
+                </Text>
+                <Text>
+                  Type: {character.type}
+                  <br />
+                </Text>
+              </>
+            }
+          />
+        </Card>
+      </div>
+      <div style={{ flex: 2 }}>
+        <Title level={3}>Episodes</Title>
         <List
-          header={<div>Episodes</div>}
-          bordered
-          dataSource={episode}
-          renderItem={(item) => <List.Item>{item.name}</List.Item>}
-          style={{ marginTop: "20px" }}
+          itemLayout="horizontal"
+          dataSource={character.episode}
+          renderItem={(episode) => (
+            <List.Item>
+              <List.Item.Meta
+                title={`Episode ${episode.episode}`}
+                description={episode.name}
+              />
+            </List.Item>
+          )}
         />
-      </Card>
+      </div>
     </div>
   );
 }

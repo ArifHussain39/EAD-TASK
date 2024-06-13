@@ -1,9 +1,9 @@
 import React from "react";
-import { Layout, Menu, Button, Row, Col, Typography, Card } from "antd";
-
-const {  Content, Footer } = Layout;
-const { Title, Paragraph } = Typography;
-import logo from "./logo.png"
+import { Layout, Button, Row, Col, Typography, Card } from "antd";
+import { Link } from "react-router-dom";
+const { Content, Footer } = Layout;
+const {  Paragraph } = Typography;
+import logo from "./logo.png";
 
 function HomePage() {
   return (
@@ -18,9 +18,13 @@ function HomePage() {
               all!
             </Paragraph>
             <Button type="primary" size="large">
-              Get Started
+              <Link to="/characters">
+              
+                  Characters
+              </Link>
             </Button>
           </div>
+
           <Row gutter={16} style={{ marginTop: "50px" }}>
             <Col span={8}>
               <Card title="Character Details" bordered={false}>

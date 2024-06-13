@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@apollo/client": "^3.10.4",
-    "antd": "^5.18.0",
-    "graphql": "^16.8.1",
-    "react-router-dom": "^6.23.1"
-  }
-}

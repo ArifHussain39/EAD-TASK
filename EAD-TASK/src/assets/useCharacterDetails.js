@@ -7,10 +7,17 @@ const GET_CHARACTER_DETAILS = gql`
       name
       image
       gender
+      species
+      status
+      type
+      origin {
+        name
+      }
       episode {
         name
         episode
       }
+
     }
   }
 `;

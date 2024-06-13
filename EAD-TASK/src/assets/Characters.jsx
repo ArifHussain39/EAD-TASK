@@ -48,15 +48,26 @@ function Characters() {
       <div style={{ marginTop: "80px" }}>
         <Row gutter={[16, 16]}>
           {data.characters.results.map((character) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={character.id}>
-              <Link to={
-                `/${character.id}`
-              }>
+            <Col xs={24} sm={12} md={8} lg={4} key={character.id}>
+              <Link to={`/${character.id}`}>
                 <Card
                   hoverable
                   cover={<img alt={character.name} src={character.image} />}
                 >
                   <Meta title={character.name} />
+                  <button
+                    style={{
+                      marginTop: "10px",
+                      color: "#fff",
+                      border: "none",
+                      padding: "8px 16px",
+                      borderRadius: "4px",
+                      
+
+                    }}
+                  >
+                    <Link to={`/${character.id}`}>View Details</Link>
+                  </button>
                 </Card>
               </Link>
             </Col>

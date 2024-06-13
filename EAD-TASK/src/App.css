@@ -8,6 +8,11 @@
   margin: -10px;
 }
 
+.clicked {
+  background-color: #001529 !important;
+}
+
+
 .logo {
   color: white;
   font-weight: bold;
@@ -30,3 +35,17 @@
     display: none;
   }
 }
+
+.hero-section {
+  text-align: center;
+  margin: 100px 0;
+  background-size: cover;
+  padding: 50px;
+  color: white;
+}
+
+
+.ant-card-head-title {
+  color: #61dafb;
+}
+
