@@ -49,7 +49,7 @@ function Characters() {
         <Row gutter={[16, 16]}>
           {data.characters.results.map((character) => (
             <Col xs={24} sm={12} md={8} lg={4} key={character.id}>
-              <Link to={`/${character.id}`}>
+              <Link to={`/characters/${character.id}`}>
                 <Card
                   hoverable
                   cover={<img alt={character.name} src={character.image} />}
@@ -62,11 +62,9 @@ function Characters() {
                       border: "none",
                       padding: "8px 16px",
                       borderRadius: "4px",
-                      
-
                     }}
                   >
-                    <Link to={`/${character.id}`}>View Details</Link>
+                    <Link to={`/characters/${character.id}`}>View Details</Link>
                   </button>
                 </Card>
               </Link>

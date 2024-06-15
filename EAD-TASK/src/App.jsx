@@ -14,9 +14,23 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/characters" element={<Characters />} />
-        <Route path="/:id" element={<CharacterDetails />} />
+        <Route path="/characters/:id" element={<CharacterDetails />} />
         <Route path="/search" element={<Search />} />
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route
+          path="*"
+          element={
+            <h1
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              404 Not Found
+            </h1>
+          }
+        />
       </Routes>
     </div>
   );
